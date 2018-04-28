@@ -1,8 +1,6 @@
 FROM alpine:latest
 MAINTAINER Nicholas Coats version: 0.1
 
-ARG USER=coatsn
-
 # setup basic linux packages
 RUN apk update && apk upgrade
 RUN apk add alpine-sdk
