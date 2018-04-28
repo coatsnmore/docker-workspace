@@ -2,3 +2,4 @@
 build.sh
 build.cmd
 *.Dockerfile
+test
