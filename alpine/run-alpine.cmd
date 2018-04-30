@@ -1,4 +1,4 @@
 SET TAG=coatsn/alpine
 ECHO TAG = %TAG%
-docker build -f alpine.Dockerfile -t %TAG% .
+docker build -t %TAG% .
 docker run -it %TAG%

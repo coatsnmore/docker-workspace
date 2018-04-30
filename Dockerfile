@@ -28,3 +28,14 @@ RUN sudo apt-get install -y nodejs
 #     && sudo apt-get install -y maven
 
 # Install Ruby and Bundler
+
+# Create User
+# ARG USER=coatsn
+# RUN adduser --disabled-password --gecos "" $USER
+# RUN usermod -aG sudo $USER
+# # RUN adduser -s /bin/bash -h /home/${USER} -D $USER
+# USER $USER
+
+# # Add VS Code Extensions
+RUN code --user-data-dir=/home --install-extension PeterJausovec.vscode-docker \
+    && code --user-data-dir=/home --install-extension EditorConfig.editorconfig
