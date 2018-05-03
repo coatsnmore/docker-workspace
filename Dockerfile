@@ -24,18 +24,27 @@ RUN curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 RUN sudo apt-get install -y nodejs
 
 # Install Java and Maven
-# RUN sudo apt-get install -y openjdk-9-jdk \
-#     && sudo apt-get install -y maven
+RUN sudo apt-get install -y default-jdk
+RUN sudo apt-get install -y maven
 
 # Install Ruby and Bundler
+RUN sudo apt-get install -y ruby-full
+RUN gem install bundler
 
 # Create User
-# ARG USER=coatsn
+# ARG USER=installer
 # RUN adduser --disabled-password --gecos "" $USER
 # RUN usermod -aG sudo $USER
-# # RUN adduser -s /bin/bash -h /home/${USER} -D $USER
-# USER $USER
+# RUN adduser --shell /bin/bash -h /home/${USER} -D $USER
 
-# # Add VS Code Extensions
-RUN code --user-data-dir=/home --install-extension PeterJausovec.vscode-docker \
-    && code --user-data-dir=/home --install-extension EditorConfig.editorconfig
+
+# Add VS Code Extensions
+# USER $USER
+# WORKDIR /home/${USER}
+ARG USER
+ENV USER_DATA_DIR /home/${USER}/.config/Code
+# RUN code --user-data-dir=~/.config/Code/
+# RUN code --user-data-dir=%{USER_DATA_DIR} --install-extension PeterJausovec.vscode-docker \
+    # && code --user-data-dir=%{USER_DATA_DIR} --install-extension EditorConfig.editorconfig
+# RUN code --install-extension PeterJausovec.vscode-docker \
+#     && code --install-extension EditorConfig.editorconfig
