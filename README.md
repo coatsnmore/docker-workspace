@@ -8,7 +8,7 @@ Variants so far:
 
 It's helpful to store a long command in a script file.  For example, on Windows, you could create a script called `run.cmd` and include:
 
-
+        cd alpine
         SET TAG=coatsn/alpine-workspace
         SET USER_WORKSPACE=//c//devl
         docker run -v %USER_WORKSPACE%:/home/src -it %TAG%
