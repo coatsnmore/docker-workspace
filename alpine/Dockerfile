@@ -21,5 +21,7 @@ WORKDIR /home
 COPY README.md ./
 COPY .bashrc ./
 
+USER user
+
 # execute
 CMD ["/bin/bash"]
