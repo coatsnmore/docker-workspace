@@ -1,5 +1,3 @@
-Barf.
-
 # Docker Workspaces based on Linux distros
 
 The goal is to build a general workspaces in various ways to achieve onboarding velocity in a team setting as well as providing consistency of developer runtime dependencies.
@@ -19,6 +17,20 @@ It's helpful to store a long command in a script file.  For example, on Windows,
 ## 2. Ubuntu with vnc access
 
 This is a visual programming environment using Ubuntu and a lighweight X11 development environment (lxde).  It also has a VNC server running, as well presenting a web server option that serves a browser-based VNC client.  This makes for fast sharing of workspaces.
+
+        SET TAG=coatsn/ubuntu-workspace:1
+        SET USER_WORKSPACE=//c//devl//docker-workspace//test
+        SET VNC_PASSWORD=mypassword
+        SET USER=coatsn
+        SET PASSWORD=password
+        docker build --build-arg USER=%USER% -t %TAG% .
+        docker run -p 6080:80 -p 5900:5900 \
+                -e USER=%USER% \
+                -e PASSWORD=%PASSWORD% \
+                -e RESOLUTION=1920x1080 \
+                -e VNC_PASSWORD=%VNC_PASSWORD% \
+                -v %USER_WORKSPACE%:/home/%USER%/src \
+                -it %TAG% /home/%USER%/setup.sh
 
 ## 3. Che
 
